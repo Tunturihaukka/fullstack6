@@ -20,23 +20,24 @@ const asObject = (anecdote) => {
 const initialState = anecdotesAtStart.map(asObject)
 
 const reducer = (state = initialState, action) => {
-  
+
   switch (action.type) {
-    case 'VOTE':
-      const id = action.payload.id
-      const anecdoteReplacer = (anecdote, id) => {
-        if (anecdote.id === id) {
-          return Object.assign({}, anecdote, {votes: anecdote.votes + 1})
-        }
-        return (
-          anecdote
-        )
+  case 'VOTE': {//case block to not allow visibility of declarations
+    const id = action.payload.id
+    const anecdoteReplacer = (anecdote, id) => {
+      if (anecdote.id === id) {
+        return Object.assign({}, anecdote, { votes: anecdote.votes + 1 })
       }
-      return state.map(x => anecdoteReplacer(x, id))
-    case 'NEW_ANECDOTE':
-      const newAnecdote = asObject(action.payload.content)
-      return state.concat(newAnecdote)
-    default:
+      return (
+        anecdote
+      )
+    }
+    return state.map(x => anecdoteReplacer(x, id))
+  }
+
+  case 'NEW_ANECDOTE':
+    return state.concat(asObject(action.payload.content))
+  default:
   }
 
   return state
