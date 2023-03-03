@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux'
 
 const App = () => {
-  const anecdotes = useSelector(state => state)
+  const anecdotes = useSelector(state => state.sort(compareAnecdotes))
   const dispatch = useDispatch()
+
 
   const vote = (id) => {
     dispatch(voteAnecdote(id))
@@ -38,6 +39,16 @@ const App = () => {
   )
 }
 
+const compareAnecdotes = ( a,b ) => {
+  if (a.votes > b.votes) {
+    return -1;
+  }
+  if (b.votes > a.votes) {
+    return 1;
+  }
+  return 0;
+}
+
 //action creators
 
 const createAnecdote = ( content ) => {
@@ -55,5 +66,6 @@ const voteAnecdote = ( id ) => {
     payload: { id }
   }
 }
+
 
 export default App
