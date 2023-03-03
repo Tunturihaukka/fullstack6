@@ -5,6 +5,8 @@ import { createStore } from 'redux'
 
 const store = createStore(counterReducer)
 
+
+
 const App = () => {
 
   return (
@@ -18,7 +20,7 @@ const App = () => {
         <div>
             ok {store.getState().ok}
         </div>
-        <div>
+        <div>e
             bad {store.getState().bad}
         </div>
     </div>
