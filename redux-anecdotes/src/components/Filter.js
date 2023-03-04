@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+import { setFilter } from '../reducers/filterReducer'
 
 const Filter = () => {
   const dispatch = useDispatch()
@@ -21,13 +22,5 @@ const Filter = () => {
   )
 }
 
-export const setFilter = ( content ) => {
-  return {
-    type: 'SET_FILTER',
-    payload: {
-      content
-    }
-  }
-}
 
 export default Filter
