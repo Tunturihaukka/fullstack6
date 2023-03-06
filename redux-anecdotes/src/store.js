@@ -3,8 +3,7 @@ import anecdoteReducer from './reducers/anecdoteReducer'
 import filterReducer from './reducers/filterReducer'
 import notificationReducer from './reducers/notificationReducer'
 
-import anecdoteService from './services/anecdotes'
-import{ setAnecdotes } from './reducers/anecdoteReducer'
+import{ initAnecdotes } from './reducers/anecdoteReducer'
 
 
 const store = configureStore({
@@ -15,8 +14,6 @@ const store = configureStore({
   }
 })
 
-anecdoteService.getAll().then(anecdotes => {
-  store.dispatch(setAnecdotes(anecdotes))}
-)
+store.dispatch(initAnecdotes())
 
 export default store
