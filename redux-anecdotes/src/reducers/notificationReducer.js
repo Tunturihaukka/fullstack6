@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const notificationSlice = createSlice({
   name: 'notification',
-  initialState: { content: 'Test notification' },
+  initialState: { content: '' },
   reducers: {
-    setNotification(state) {
-      return state
+    setNotification(state, action) {
+      return { content: action.payload }
     }
   },
 })
